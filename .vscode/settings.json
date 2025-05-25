@@ -3,6 +3,7 @@
     "devcontainers",
     "localtime",
     "noninteractive",
+    "turbopack",
     "tzdata",
     "zoneinfo"
   ],
