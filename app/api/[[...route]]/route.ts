@@ -4,13 +4,10 @@ import { expensesRoute } from "./expenses";
 
 export const runtime = "edge";
 
-const app = new Hono().basePath("/api");
-
-app.get("/test", (c) => {
-  return c.json({ message: "Hello, World!" });
-});
-
-app.route("/expenses", expensesRoute);
+const app = new Hono();
+const apiRoutes = app.basePath("/api").route("/expenses", expensesRoute);
 
 export const GET = handle(app);
 export const POST = handle(app);
+
+export type ApiRoutes = typeof apiRoutes;

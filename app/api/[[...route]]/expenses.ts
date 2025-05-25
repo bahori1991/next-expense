@@ -6,7 +6,7 @@ const expenseSchema = z.object({
   id: z.number().int().positive().min(1),
   title: z.string().min(3).max(100),
   amount: z.number().int().positive(),
-})
+});
 
 type Expense = z.infer<typeof expenseSchema>;
 
@@ -18,10 +18,16 @@ const fakeExpenses: Expense[] = [
   { id: 3, title: "Utilities", amount: 100 },
 ];
 
-
 export const expensesRoute = new Hono()
-  .get("/", (c) => {
+  .get("/", async (c) => {
     return c.json({ expenses: fakeExpenses });
+  })
+  .get("/total-spent", (c) => {
+    const totalSpent = fakeExpenses.reduce(
+      (acc, expense) => acc + expense.amount,
+      0,
+    );
+    return c.json({ total: totalSpent });
   })
   .post("/", zValidator("json", createPostSchema), (c) => {
     const expense = c.req.valid("json");
