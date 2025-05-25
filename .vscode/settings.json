@@ -1,0 +1,12 @@
+{
+  "cSpell.words": [
+    "devcontainers",
+    "localtime",
+    "noninteractive",
+    "tzdata",
+    "zoneinfo"
+  ],
+  "files.exclude": {
+    "node_modules": true,
+  }
+}
