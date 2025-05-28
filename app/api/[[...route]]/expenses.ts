@@ -4,13 +4,19 @@ import { z } from "zod";
 
 const expenseSchema = z.object({
   id: z.number().int().positive().min(1),
-  title: z.string().min(3).max(100),
-  amount: z.number().int().positive(),
+  title: z
+    .string({ invalid_type_error: "Title must be a string" })
+    .min(3, { message: "Title must be at least 3 characters long" })
+    .max(100, { message: "Title must be less than 100 characters long" }),
+  amount: z.coerce
+    .number({ invalid_type_error: "Amount must be a number" })
+    .int({ message: "Amount must be a number" })
+    .positive({ message: "Amount must be positive" }),
 });
 
 type Expense = z.infer<typeof expenseSchema>;
 
-const createPostSchema = expenseSchema.omit({ id: true });
+export const createPostSchema = expenseSchema.omit({ id: true });
 
 const fakeExpenses: Expense[] = [
   { id: 1, title: "Groceries", amount: 100 },

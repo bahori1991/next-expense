@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
+    "cuid",
     "devcontainers",
     "localtime",
     "noninteractive",
@@ -15,5 +16,8 @@
   "editor.defaultFormatter": "biomejs.biome",
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }
