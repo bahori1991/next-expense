@@ -6,9 +6,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { api } from "@/lib/api";
+import { auth } from "@/lib/auth/auth";
 import { Suspense } from "react";
 
 async function TotalSpentContent() {
+  const session = await auth();
+
+  if (!session?.user) {
+    return <div>Please sign in</div>;
+  }
+
   const res = await api.expenses["total-spent"].$get();
 
   if (!res.ok) {

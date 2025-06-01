@@ -62,6 +62,7 @@ export function ExpensesTableSkeleton() {
         {Array(3)
           .fill(0)
           .map((_, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
             <TableRow key={i}>
               <TableCell>
                 <Skeleton className="h-4" />

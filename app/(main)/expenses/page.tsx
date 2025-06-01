@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { ExpensesTableContent, ExpensesTableSkeleton } from "./expenses-table";
 
-export default function ExpensesPage() {
+export default async function ExpensesPage() {
   return (
     <div className="p-2">
       <Suspense fallback={<ExpensesTableSkeleton />}>

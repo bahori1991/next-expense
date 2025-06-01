@@ -6,6 +6,7 @@
     "noninteractive",
     "turbopack",
     "tzdata",
+    "vercel",
     "zoneinfo"
   ],
   "files.exclude": {

@@ -3,7 +3,7 @@
 import { api } from "@/lib/api";
 import { parseWithZod } from "@conform-to/zod";
 import { redirect } from "next/navigation";
-import { createPostSchema } from "../api/[[...route]]/expenses";
+import { createPostSchema } from "../../api/[[...route]]/expenses";
 
 export async function createNewExpense(prevState: unknown, formData: FormData) {
   const submission = parseWithZod(formData, { schema: createPostSchema });
@@ -12,8 +12,10 @@ export async function createNewExpense(prevState: unknown, formData: FormData) {
     return submission.reply();
   }
 
+  const json = submission.value;
+
   const res = await api.expenses.$post({
-    json: submission.value,
+    json,
   });
 
   if (!res.ok) {

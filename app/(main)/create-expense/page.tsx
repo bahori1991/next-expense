@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useActionState } from "react";
-import { createPostSchema } from "../api/[[...route]]/expenses";
+import { createPostSchema } from "../../api/[[...route]]/expenses";
 import { createNewExpense } from "./action";
 
 export default function CreateExpensePage() {
